@@ -5,11 +5,11 @@ import studio.abos.life.core.geometry.FreeShape;
 import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.geometry.Vec3;
 
-public interface Reality extends FreeShape {
+public interface Universe extends FreeShape {
 
     void applyGravityTo(final @NonNull MassShape massShape);
 
-    default boolean isOutsideReality(final @NonNull Shape shape) {
+    default boolean isOutside(final @NonNull Shape shape) {
         final float width = getMeasure().width() / 2;
         final float height = getMeasure().height() / 2;
         final float depth = getMeasure().depth() / 2;

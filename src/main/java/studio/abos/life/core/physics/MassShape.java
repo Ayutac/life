@@ -1,5 +1,6 @@
 package studio.abos.life.core.physics;
 
+import lombok.NonNull;
 import studio.abos.life.core.geometry.MovingShape;
 import studio.abos.life.core.geometry.Vec3;
 
@@ -14,5 +15,9 @@ public interface MassShape extends MovingShape {
     default boolean affectedByGravity() {
         return true;
     }
+
+    Universe getUniverse();
+
+    void setUniverse(final @NonNull Universe universe);
 
 }

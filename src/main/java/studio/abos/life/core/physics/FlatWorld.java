@@ -3,7 +3,7 @@ package studio.abos.life.core.physics;
 import lombok.NonNull;
 import studio.abos.life.core.geometry.Measure3;
 
-public record FlatWorld(@NonNull Measure3 measure, float gravity) implements Reality {
+public record FlatWorld(@NonNull Measure3 measure, float gravity) implements Universe {
 
     public FlatWorld {
         if (gravity < 0) {

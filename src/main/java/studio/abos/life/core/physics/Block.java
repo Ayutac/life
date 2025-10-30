@@ -11,26 +11,30 @@ public class Block implements MassShape {
 
     @Getter
     @Setter
-    protected Vec3 minimalPosition;
+    protected @NonNull Universe universe;
     @Getter
     @Setter
-    protected Measure3 measure;
+    protected @NonNull Vec3 minimalPosition;
+    @Getter
+    @Setter
+    protected @NonNull Measure3 measure;
     @Getter
     @Setter
     protected float mass;
     @Getter
     @Setter
-    protected Vec3 velocity;
+    protected @NonNull Vec3 velocity;
 
-    public Block(final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final @NonNull Vec3 velocity) {
+    public Block(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final @NonNull Vec3 velocity) {
+        this.universe = universe;
         this.minimalPosition = minimalPosition;
         this.measure = measure;
         this.mass = mass;
         this.velocity = velocity;
     }
 
-    public Block(final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass) {
-        this(minimalPosition, measure, mass, Vec3.ZERO);
+    public Block(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass) {
+        this(universe, minimalPosition, measure, mass, Vec3.ZERO);
     }
 
     @Override
