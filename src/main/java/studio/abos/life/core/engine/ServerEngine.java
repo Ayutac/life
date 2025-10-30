@@ -16,6 +16,9 @@ public class ServerEngine {
     protected Collection<MassShape> objects = new LinkedList<>();
 
     public void tick() {
+        for (final Universe universe : multiverse) {
+            universe.ageOneTick();
+        }
         final Collection<MassShape> discard = new LinkedList<>();
         for (final MassShape object : objects) {
             object.checkFalling(getObjects());

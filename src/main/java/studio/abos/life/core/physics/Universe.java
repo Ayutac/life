@@ -5,7 +5,9 @@ import studio.abos.life.core.geometry.FreeShape;
 import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.geometry.Vec3;
 
-public interface Universe extends FreeShape {
+import java.util.Collection;
+
+public interface Universe extends FreeShape, Ageable {
 
     void applyGravityTo(final @NonNull MassShape massShape);
 
@@ -16,5 +18,7 @@ public interface Universe extends FreeShape {
         final Vec3 boxCenter = shape.getBoundingBox().getCenter();
         return boxCenter.x() < -width || boxCenter.x() > width || boxCenter.y() < -height || boxCenter.y() > height || boxCenter.z() < -depth || boxCenter.z() > depth;
     }
+
+    float skyLightAt(final @NonNull Vec3 position, final @NonNull Collection<? extends Shape> possibleCovers);
 
 }

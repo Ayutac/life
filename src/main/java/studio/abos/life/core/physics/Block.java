@@ -54,7 +54,7 @@ public class Block implements MassShape {
 
     @Override
     public void checkFalling(final @NonNull Collection<? extends Shape> possibleCollisions) {
-        boolean checkAbove = universe instanceof FlatUniverse && ((FlatUniverse) universe).gravityOrigin() > getCenterOfMass().y();
+        boolean checkAbove = universe instanceof FlatUniverse && ((FlatUniverse) universe).getGravityOrigin() > getCenterOfMass().y();
         for (final Shape object : possibleCollisions) {
             if (object == this) {
                 continue;

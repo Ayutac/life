@@ -16,6 +16,10 @@ public class GeometryUtils {
         return true; // TODO implement
     }
 
+    public boolean posIsBelow(final @NonNull Vec3 position, final @NonNull Shape shape) {
+        return false; // TODO implement
+    }
+
     public boolean intersect(final @NonNull Cuboid a, final @NonNull Cuboid b) {
         return false; // TODO implement
     }
