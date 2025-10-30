@@ -1,4 +1,4 @@
-package studio.abos.life.core;
+package studio.abos.life.core.geometry;
 
 import lombok.NonNull;
 
@@ -34,4 +34,5 @@ public record Cuboid(@NonNull Vec3 position, @NonNull Measure3 measure) implemen
     public Cuboid getBoundingBox() {
         return this;
     }
+
 }

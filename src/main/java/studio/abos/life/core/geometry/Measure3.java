@@ -1,4 +1,4 @@
-package studio.abos.life.core;
+package studio.abos.life.core.geometry;
 
 /**
  * Measurements in 3-space. Zero values are allowed, negative values are not.

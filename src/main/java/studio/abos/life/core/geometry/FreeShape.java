@@ -1,4 +1,4 @@
-package studio.abos.life.core;
+package studio.abos.life.core.geometry;
 
 /**
  * A pure shape without needing a {@link Vec3 position}.

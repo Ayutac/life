@@ -1,4 +1,4 @@
-package studio.abos.life.core;
+package studio.abos.life.core.geometry;
 
 import lombok.NonNull;
 
@@ -43,7 +43,7 @@ public record Vec3(float x, float y, float z) implements Iterable<Float> {
 
         private Vec3Position pos;
 
-        private Vec3 vec;
+        private final Vec3 vec;
 
         public Vec3Iterator(final @NonNull Vec3 vec) {
             this.vec = vec;
