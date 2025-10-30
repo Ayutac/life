@@ -1,5 +1,6 @@
 package studio.abos.life.core.engine;
 
+import studio.abos.life.core.physics.Living;
 import studio.abos.life.core.physics.MassShape;
 import studio.abos.life.core.physics.Universe;
 
@@ -21,7 +22,7 @@ public class ServerEngine {
                 object.getUniverse().applyGravityTo(object);
             }
             object.move(getObjects());
-            if (object.getUniverse().isOutside(object)) {
+            if (object.getUniverse().isOutside(object) || (object instanceof Living living && !living.isAlive())) {
                 discard.add(object);
             }
         }

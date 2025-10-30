@@ -7,6 +7,9 @@ import studio.abos.life.core.geometry.Vec3;
 
 import java.util.Collection;
 
+/**
+ * A {@link MovingShape} with a mass and a {@link Universe} to be in.
+ */
 public interface MassShape extends MovingShape {
 
     float getMass();
