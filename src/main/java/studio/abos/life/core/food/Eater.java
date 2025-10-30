@@ -16,6 +16,8 @@ public interface Eater extends Living {
 
     void setOptionalNutrients(final @NonNull Nutrients nutrients);
 
+    boolean canEat(final @NonNull Eatable eatable);
+
     default void eat(final @NonNull Eatable eatable) {
         setCurrentNutrients(getCurrentNutrients().add(eatable.getNutrientValues()));
         eatable.setHealth(0f);

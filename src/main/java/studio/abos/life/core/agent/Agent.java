@@ -19,8 +19,16 @@ public interface Agent extends Living {
         return 0f;
     }
 
+    default boolean canRun() {
+        return getMaxRunningSpeed() > 0f;
+    }
+
     default float getMaxFlyingSpeed() {
         return 0f;
+    }
+
+    default boolean canFly() {
+        return getMaxFlyingSpeed() > 0f;
     }
 
 }
