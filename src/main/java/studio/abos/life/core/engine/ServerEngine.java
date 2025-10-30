@@ -15,7 +15,9 @@ public class ServerEngine {
     public void tick() {
         final Collection<MassShape> discard = new LinkedList<>();
         for (final MassShape object : objects) {
-            object.getUniverse().applyGravityTo(object);
+            if (object.affectedByGravity() && object.isFalling()) {
+                object.getUniverse().applyGravityTo(object);
+            }
             object.move();
             if (object.getUniverse().isOutside(object)) {
                 discard.add(object);

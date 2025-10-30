@@ -24,6 +24,12 @@ public class Block implements MassShape {
     @Getter
     @Setter
     protected @NonNull Vec3 velocity;
+    @Getter
+    @Setter
+    protected boolean falling;
+    @Getter
+    @Setter
+    protected boolean affectedByGravity;
 
     public Block(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final @NonNull Vec3 velocity) {
         this.universe = universe;

@@ -12,6 +12,10 @@ public interface MassShape extends MovingShape {
         return getBoundingBox().getCenter();
     }
 
+    default boolean isFalling() {
+        return affectedByGravity();
+    }
+
     default boolean affectedByGravity() {
         return true;
     }
