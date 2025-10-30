@@ -4,6 +4,7 @@ import studio.abos.life.core.physics.MassShape;
 import studio.abos.life.core.physics.Universe;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class ServerEngine {
@@ -15,10 +16,11 @@ public class ServerEngine {
     public void tick() {
         final Collection<MassShape> discard = new LinkedList<>();
         for (final MassShape object : objects) {
+            object.checkFalling(getObjects());
             if (object.affectedByGravity() && object.isFalling()) {
                 object.getUniverse().applyGravityTo(object);
             }
-            object.move();
+            object.move(getObjects());
             if (object.getUniverse().isOutside(object)) {
                 discard.add(object);
             }
@@ -26,4 +28,11 @@ public class ServerEngine {
         objects.removeAll(discard);
     }
 
+    public Collection<Universe> getMultiverse() {
+        return Collections.unmodifiableCollection(multiverse);
+    }
+
+    public Collection<MassShape> getObjects() {
+        return Collections.unmodifiableCollection(objects);
+    }
 }

@@ -2,7 +2,10 @@ package studio.abos.life.core.physics;
 
 import lombok.NonNull;
 import studio.abos.life.core.geometry.MovingShape;
+import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.geometry.Vec3;
+
+import java.util.Collection;
 
 public interface MassShape extends MovingShape {
 
@@ -12,6 +15,12 @@ public interface MassShape extends MovingShape {
         return getBoundingBox().getCenter();
     }
 
+    Universe getUniverse();
+
+    void setUniverse(final @NonNull Universe universe);
+
+    void checkFalling(final @NonNull Collection<? extends Shape> possibleCollisions);
+
     default boolean isFalling() {
         return affectedByGravity();
     }
@@ -20,8 +29,6 @@ public interface MassShape extends MovingShape {
         return true;
     }
 
-    Universe getUniverse();
-
-    void setUniverse(final @NonNull Universe universe);
+    void move(final @NonNull Collection<? extends Shape> possibleCollisions);
 
 }

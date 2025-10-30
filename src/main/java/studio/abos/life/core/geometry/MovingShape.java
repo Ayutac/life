@@ -19,6 +19,9 @@ public interface MovingShape extends Shape {
 
     void setVelocity(final @NonNull Vec3 velocity);
 
+    /**
+     * Move regardless of collisions.
+     */
     default void move() {
         setMinimalPosition(getMinimalPosition().add(getVelocity()));
     }
