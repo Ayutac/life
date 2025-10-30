@@ -17,6 +17,8 @@ public interface MovingShape extends Shape {
      */
     Vec3 getVelocity();
 
+    void setVelocity(final @NonNull Vec3 velocity);
+
     default void move() {
         setMinimalPosition(getMinimalPosition().add(getVelocity()));
     }

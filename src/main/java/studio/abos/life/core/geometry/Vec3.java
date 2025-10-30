@@ -10,6 +10,8 @@ import java.util.NoSuchElementException;
  */
 public record Vec3(float x, float y, float z) implements Iterable<Float> {
 
+    public static final Vec3 ZERO = new Vec3(0, 0, 0);
+
     public enum Vec3Position {
         X, Y, Z
     }

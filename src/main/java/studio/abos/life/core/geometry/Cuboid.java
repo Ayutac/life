@@ -35,4 +35,8 @@ public record Cuboid(@NonNull Vec3 position, @NonNull Measure3 measure) implemen
         return this;
     }
 
+    public Vec3 getCenter() {
+        return new Vec3(position.x() + measure.width() / 2, position.y() + measure().height() / 2, position.z() + measure.depth() / 2);
+    }
+
 }
