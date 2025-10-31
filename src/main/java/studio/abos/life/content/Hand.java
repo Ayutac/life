@@ -10,18 +10,24 @@ import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.geometry.Vec3;
 import studio.abos.life.core.misc.Inventory;
 import studio.abos.life.core.misc.InventoryHolder;
+import studio.abos.life.core.physics.Ageable;
 import studio.abos.life.core.physics.BlockLiving;
 import studio.abos.life.core.physics.Universe;
 
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class Hand extends BlockLiving implements Eatable, Inventory {
+public class Hand extends BlockLiving implements Ageable, Eatable, Inventory {
 
     @Getter
     @Setter
+    protected InventoryHolder owner;
+    @Getter
+    @Setter
+    protected long age;
+    @Getter
+    @Setter
     protected Nutrients nutrientValues;
-
     @Getter
     protected final Collection<Shape> items = new LinkedList<>();
 
@@ -33,6 +39,12 @@ public class Hand extends BlockLiving implements Eatable, Inventory {
     public Hand(final InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
         this(owner.getUniverse(), owner.getMinimalPosition().add(relativeMinimalPosition), measure, mass, health, nutrients);
         owner.getInventories().add(this);
+        this.owner = owner;
         setAffectedByGravity(false);
+    }
+
+    @Override
+    public void ageOneTick() {
+        age++;
     }
 }
