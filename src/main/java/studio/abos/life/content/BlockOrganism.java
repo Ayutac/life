@@ -10,8 +10,6 @@ import studio.abos.life.core.geometry.Measure3;
 import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.geometry.Vec3;
 import studio.abos.life.core.misc.Harvestable;
-import studio.abos.life.core.physics.Ageable;
-import studio.abos.life.core.physics.BlockLiving;
 import studio.abos.life.core.physics.MassShape;
 import studio.abos.life.core.physics.Universe;
 
@@ -19,14 +17,8 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.function.Function;
 
-public class Plant extends BlockLiving implements Ageable, Eatable, Eater, Harvestable {
+public class BlockOrganism extends BlockItem implements Eater, Harvestable {
 
-    @Getter
-    @Setter
-    protected long age;
-    @Getter
-    @Setter
-    protected Nutrients nutrientValues;
     @Getter
     @Setter
     protected Nutrients currentNutrients;
@@ -43,15 +35,9 @@ public class Plant extends BlockLiving implements Ageable, Eatable, Eater, Harve
         ROTTEN
     }
 
-    public Plant(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final long age, final @NonNull Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield) {
-        super(universe, minimalPosition, measure, mass, health);
-        this.age = age;
+    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final Nutrients nutrients, final @NonNull Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield) {
+        super(universe, minimalPosition, measure, mass, health, nutrients);
         this.ageYield = Map.copyOf(ageYield);
-    }
-
-    @Override
-    public void ageOneTick() {
-        age++;
     }
 
     public AgeCategory getAgeCategory() {
