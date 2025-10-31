@@ -1,7 +1,7 @@
 package studio.abos.life.core.food;
 
 import lombok.NonNull;
-import studio.abos.life.core.physics.Living;
+import studio.abos.life.core.misc.Living;
 
 /**
  * A {@link Living} that needs {@link Nutrients} and can eat

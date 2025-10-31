@@ -1,7 +1,7 @@
 package studio.abos.life.core.agent;
 
 import studio.abos.life.core.agent.goal.Goal;
-import studio.abos.life.core.physics.Living;
+import studio.abos.life.core.misc.Living;
 
 import java.util.SequencedSet;
 

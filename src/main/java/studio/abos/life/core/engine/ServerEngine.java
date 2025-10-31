@@ -1,7 +1,7 @@
 package studio.abos.life.core.engine;
 
 import studio.abos.life.core.physics.Ageable;
-import studio.abos.life.core.physics.Living;
+import studio.abos.life.core.misc.Living;
 import studio.abos.life.core.physics.MassShape;
 import studio.abos.life.core.physics.Universe;
 

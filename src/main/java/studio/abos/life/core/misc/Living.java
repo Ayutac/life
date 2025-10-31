@@ -1,4 +1,6 @@
-package studio.abos.life.core.physics;
+package studio.abos.life.core.misc;
+
+import studio.abos.life.core.physics.MassShape;
 
 /**
  * A {@link MassShape} with an additional discarding condition (health).

@@ -3,7 +3,6 @@ package studio.abos.life.core.misc;
 import lombok.NonNull;
 import studio.abos.life.core.engine.ServerEngine;
 import studio.abos.life.core.geometry.Shape;
-import studio.abos.life.core.physics.Living;
 import studio.abos.life.core.physics.MassShape;
 
 import java.util.Collection;
