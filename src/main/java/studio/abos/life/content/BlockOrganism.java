@@ -29,7 +29,7 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
     protected final Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield;
 
     public enum AgeCategory {
-        SEED,
+        BABY, // seed in case of plants
         YOUNG,
         MATURE,
         ROTTEN
@@ -41,7 +41,7 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
     }
 
     public AgeCategory getAgeCategory() {
-        return AgeCategory.SEED; // TODO implement
+        return AgeCategory.BABY; // TODO implement
     }
 
     @Override

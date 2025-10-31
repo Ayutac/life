@@ -13,6 +13,9 @@ import studio.abos.life.core.physics.Universe;
 import java.util.Collection;
 import java.util.LinkedList;
 
+/**
+ * Like a hand.
+ */
 public class BlockInventory extends BlockItem implements Inventory {
 
     @Getter
