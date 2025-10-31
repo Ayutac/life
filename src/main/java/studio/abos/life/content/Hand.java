@@ -38,7 +38,8 @@ public class Hand extends BlockLiving implements Ageable, Eatable, Inventory {
 
     public Hand(final InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
         this(owner.getUniverse(), owner.getMinimalPosition().add(relativeMinimalPosition), measure, mass, health, nutrients);
-        owner.getInventories().add(this);
+        owner.addOwnedShape(this);
+        owner.addInventory(this);
         this.owner = owner;
         setAffectedByGravity(false);
     }

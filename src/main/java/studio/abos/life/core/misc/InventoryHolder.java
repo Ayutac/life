@@ -1,14 +1,22 @@
 package studio.abos.life.core.misc;
 
+import lombok.NonNull;
 import studio.abos.life.core.geometry.Shape;
-import studio.abos.life.core.physics.MassShape;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.SequencedSet;
 
-public interface InventoryHolder extends MassShape {
+public interface InventoryHolder extends Owner {
 
-    List<Inventory> getInventories();
+    SequencedSet<Inventory> getInventories();
+
+    void addInventory(final @NonNull Inventory inventory);
+
+    void removeInventory(final @NonNull Inventory inventory);
+
+    default boolean containsInventory(final @NonNull Inventory inventory) {
+        return getInventories().contains(inventory);
+    }
 
     // TODO proper inventory management
 
