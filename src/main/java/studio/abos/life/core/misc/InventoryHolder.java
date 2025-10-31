@@ -6,7 +6,7 @@ import studio.abos.life.core.physics.MassShape;
 import java.util.Collection;
 import java.util.List;
 
-public interface InventoryHolding extends MassShape {
+public interface InventoryHolder extends MassShape {
 
     List<Inventory> getInventories();
 
