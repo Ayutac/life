@@ -3,6 +3,7 @@ package studio.abos.life.core.misc;
 import lombok.NonNull;
 import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.physics.Living;
+import studio.abos.life.core.physics.MassShape;
 
 import java.util.Collection;
 
@@ -11,6 +12,6 @@ import java.util.Collection;
  */
 public interface Harvestable extends Living {
 
-    Collection<Shape> getYield(final @NonNull Shape tool);
+    Collection<MassShape> getYield(final @NonNull Shape tool);
 
 }

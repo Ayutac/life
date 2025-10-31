@@ -12,9 +12,9 @@ public interface Eater extends Living {
 
     void setCurrentNutrients(final @NonNull Nutrients nutrients);
 
-    Nutrients getOptionalNutrients();
+    Nutrients getOptimalNutrients();
 
-    void setOptionalNutrients(final @NonNull Nutrients nutrients);
+    void setOptimalNutrients(final @NonNull Nutrients nutrients);
 
     boolean canEat(final @NonNull Eatable eatable);
 

@@ -43,4 +43,8 @@ public class ServerEngine {
     public Collection<MassShape> getObjects() {
         return Collections.unmodifiableCollection(objects);
     }
+
+    public void addObject(final MassShape object) {
+        objects.add(object);
+    }
 }
