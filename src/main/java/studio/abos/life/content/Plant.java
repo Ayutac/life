@@ -64,7 +64,7 @@ public class Plant extends BlockLiving implements Ageable, Eatable, Eater, Harve
     }
 
     @Override
-    public Collection<MassShape> getYield(@NonNull Shape tool) {
+    public Collection<MassShape> getYield(final @NonNull Shape tool) {
         return ageYield.get(getAgeCategory()).apply(tool);
     }
 }
