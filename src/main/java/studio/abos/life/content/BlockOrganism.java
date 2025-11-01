@@ -10,6 +10,7 @@ import studio.abos.life.core.geometry.Measure3;
 import studio.abos.life.core.geometry.Shape;
 import studio.abos.life.core.geometry.Vec3;
 import studio.abos.life.core.misc.Harvestable;
+import studio.abos.life.core.misc.Owner;
 import studio.abos.life.core.physics.MassShape;
 import studio.abos.life.core.physics.Universe;
 
@@ -54,6 +55,10 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
         this.ripeMass = Map.copyOf(ripeMass);
         this.ripeNutrients = Map.copyOf(ripeNutrients);
         this.ripeYield = Map.copyOf(ripeYield);
+    }
+
+    public BlockOrganism(final @NonNull Owner owner, final Vec3 relativeMinimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
+        this(owner.getUniverse(), owner.getMinimalPosition().add(relativeMinimalPosition), health, ripeCategory, ripeMeasure, ripeMass, ripeNutrients, ripeYield);
     }
 
     public RipeCategory getRipeCategory() {

@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * Like a hand.
+ * Like a backpack.
  */
 public class BlockInventory extends BlockItem implements Inventory {
 
@@ -25,7 +25,7 @@ public class BlockInventory extends BlockItem implements Inventory {
         super(universe, minimalPosition, measure, mass, health, nutrients);
     }
 
-    public BlockInventory(final InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
+    public BlockInventory(final @NonNull InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
         super(owner, relativeMinimalPosition, measure, mass, health, nutrients);
         owner.addInventory(this);
     }

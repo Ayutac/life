@@ -15,9 +15,6 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.SequencedSet;
 
-/**
- * Like a limb, torso.
- */
 public class BlockInventoryForwarder extends BlockItem implements InventoryHolder {
 
     @Getter
@@ -29,7 +26,7 @@ public class BlockInventoryForwarder extends BlockItem implements InventoryHolde
         super(universe, minimalPosition, measure, mass, health, nutrients);
     }
 
-    public BlockInventoryForwarder(final InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
+    public BlockInventoryForwarder(final @NonNull InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
         super(owner, relativeMinimalPosition, measure, mass, health, nutrients);
     }
 
