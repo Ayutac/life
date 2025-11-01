@@ -4,6 +4,7 @@ import lombok.experimental.UtilityClass;
 import studio.abos.life.core.food.Nutrients;
 import studio.abos.life.core.geometry.Measure3;
 import studio.abos.life.core.geometry.Shape;
+import studio.abos.life.core.misc.Harvestable;
 import studio.abos.life.core.physics.MassShape;
 
 import java.util.Collection;
@@ -17,7 +18,7 @@ public class Maps {
     public final Map<BlockOrganism.RipeCategory, Measure3> WHEAT_MEASURE = new EnumMap<>(BlockOrganism.RipeCategory.class);
     public final Map<BlockOrganism.RipeCategory, Float> WHEAT_MASS = new EnumMap<>(BlockOrganism.RipeCategory.class);
     public final Map<BlockOrganism.RipeCategory, Nutrients> WHEAT_NUTRIENTS = new EnumMap<>(BlockOrganism.RipeCategory.class);
-    public final Map<BlockOrganism.RipeCategory, Function<Shape, Collection<MassShape>>> WHEAT_YIELD = new EnumMap<>(BlockOrganism.RipeCategory.class);
+    public final Map<BlockOrganism.RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> WHEAT_YIELD = new EnumMap<>(BlockOrganism.RipeCategory.class);
 
     static {
         // Wheat
@@ -37,7 +38,7 @@ public class Maps {
         // TODO think about yield implementation again
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.BABY, Functions.NO_YIELD);
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.YOUNG, Functions.NO_YIELD);
-        WHEAT_YIELD.put(BlockOrganism.RipeCategory.MATURE, Functions.NO_YIELD);
+        WHEAT_YIELD.put(BlockOrganism.RipeCategory.MATURE, Functions.WHEAT_YIELD);
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.ROTTEN, Functions.NO_YIELD);
     }
 

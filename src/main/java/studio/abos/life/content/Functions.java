@@ -1,10 +1,12 @@
 package studio.abos.life.content;
 
 import studio.abos.life.core.geometry.Shape;
+import studio.abos.life.core.misc.Harvestable;
 import studio.abos.life.core.physics.FlatUniverse;
 import studio.abos.life.core.physics.MassShape;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
@@ -23,6 +25,10 @@ public interface Functions {
         return BlockOrganism.RipeCategory.ROTTEN;
     };
 
-    Function<Shape, Collection<MassShape>> NO_YIELD = shape -> List.of();
+    Function<Shape, Collection<Function<Harvestable, MassShape>>> NO_YIELD = tool -> List.of();
+
+    Function<Harvestable, MassShape> WHEAT_YIELD_SINGLE = wheat -> Types.WHEAT.create(wheat.getUniverse(), wheat.getMinimalPosition());
+
+    Function<Shape, Collection<Function<Harvestable, MassShape>>> WHEAT_YIELD = tool -> Collections.nCopies(15, WHEAT_YIELD_SINGLE);
 
 }

@@ -35,7 +35,7 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
     @Getter
     protected @NonNull final Map<RipeCategory, Nutrients> ripeNutrients;
     @Getter
-    protected @NonNull final Map<RipeCategory, Function<Shape, Collection<MassShape>>> ripeYield;
+    protected @NonNull final Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield;
 
     public enum RipeCategory {
         BABY, // seed in case of plants
@@ -44,7 +44,7 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
         ROTTEN
     }
 
-    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<MassShape>>> ripeYield) {
+    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
         super(universe, minimalPosition, ripeMeasure.get(RipeCategory.BABY), ripeMass.get(RipeCategory.BABY), health, ripeNutrients.get(RipeCategory.BABY));
         this.ripeCategory = ripeCategory;
         this.ripeMeasure = Map.copyOf(ripeMeasure);
@@ -98,7 +98,9 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
 
     @Override
     public Collection<MassShape> getYield(final @NonNull Shape tool) {
-        return ripeYield.get(getRipeCategory()).apply(tool);
+        return ripeYield.get(getRipeCategory()).apply(tool).stream()
+                .map(f -> f.apply(this))
+                .toList();
     }
 
     @FunctionalInterface
