@@ -25,8 +25,9 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
     @Getter
     @Setter
     protected Nutrients optimalNutrients;
+    protected @NonNull Function<Long, AgeCategory> ageCategory;
     @Getter
-    protected final Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield;
+    protected @NonNull final Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield;
 
     public enum AgeCategory {
         BABY, // seed in case of plants
@@ -35,13 +36,14 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
         ROTTEN
     }
 
-    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final Nutrients nutrients, final @NonNull Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield) {
+    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final Nutrients nutrients, final @NonNull Function<Long, AgeCategory> ageCategory, final @NonNull Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield) {
         super(universe, minimalPosition, measure, mass, health, nutrients);
+        this.ageCategory = ageCategory;
         this.ageYield = Map.copyOf(ageYield);
     }
 
     public AgeCategory getAgeCategory() {
-        return AgeCategory.BABY; // TODO implement
+        return ageCategory.apply(age);
     }
 
     @Override
