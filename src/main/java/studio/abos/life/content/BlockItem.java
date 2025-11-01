@@ -48,4 +48,11 @@ public class BlockItem extends Block implements Ageable, Eatable {
     public void ageOneTick() {
         age++;
     }
+
+    @FunctionalInterface
+    public interface Type {
+
+        BlockItem create(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition);
+
+    }
 }

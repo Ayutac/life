@@ -102,11 +102,4 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
                 .map(f -> f.apply(this))
                 .toList();
     }
-
-    @FunctionalInterface
-    public interface Type {
-
-        BlockOrganism create(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition);
-
-    }
 }
