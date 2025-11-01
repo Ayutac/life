@@ -12,18 +12,26 @@ import java.util.function.Function;
 
 public interface Functions {
 
-    Function<Long, BlockOrganism.RipeCategory> DEFAULT_CROP_AGE_CATEGORY = age -> {
-        if (age < 2 * FlatUniverse.DEFAULT_DAY_LENGTH) { // until 1 day cycle have passed
-            return BlockOrganism.RipeCategory.BABY;
+    Function<Long, BlockOrganism.RipeCategory> DEFAULT_CROP_RIPE_CATEGORY = ripeCategory(1, 3, 11);
+    Function<Long, BlockOrganism.RipeCategory> DEFAULT_HUMAN_RIPE_CATEGORY = ripeCategory(3, 27, 150);
+
+    static Function<Long, BlockOrganism.RipeCategory> ripeCategory(final int babyDayCycles, final int youngDayCycles, final int matureDayCycles) {
+        if (babyDayCycles > youngDayCycles || youngDayCycles > matureDayCycles) {
+            throw new IllegalArgumentException("Parameters must be non-strictly increasing!");
         }
-        if (age < 6 * FlatUniverse.DEFAULT_DAY_LENGTH) { // until 3 day cycles have passed
-            return BlockOrganism.RipeCategory.YOUNG;
-        }
-        if (age < 22 * FlatUniverse.DEFAULT_DAY_LENGTH) { // until 11 day cycles have passed
-            return BlockOrganism.RipeCategory.MATURE;
-        }
-        return BlockOrganism.RipeCategory.ROTTEN;
-    };
+        return age -> {
+            if (age < Math.multiplyExact(Math.multiplyExact(FlatUniverse.DEFAULT_DAY_LENGTH, babyDayCycles), 2)) {
+                return BlockOrganism.RipeCategory.BABY;
+            }
+            if (age < Math.multiplyExact(Math.multiplyExact(FlatUniverse.DEFAULT_DAY_LENGTH, youngDayCycles), 2)) {
+                return BlockOrganism.RipeCategory.YOUNG;
+            }
+            if (age < Math.multiplyExact(Math.multiplyExact(FlatUniverse.DEFAULT_DAY_LENGTH, matureDayCycles), 2)) {
+                return BlockOrganism.RipeCategory.MATURE;
+            }
+            return BlockOrganism.RipeCategory.EXPIRED;
+        };
+    }
 
     Function<Shape, Collection<Function<Harvestable, MassShape>>> NO_YIELD = tool -> List.of();
 

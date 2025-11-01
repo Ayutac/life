@@ -45,7 +45,7 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
         BABY, // seed in case of plants
         YOUNG,
         MATURE,
-        ROTTEN
+        EXPIRED
     }
 
     public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
