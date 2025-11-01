@@ -20,4 +20,8 @@ public record Measure3(float width, float height, float depth) implements FreeSh
         return new Measure3(width + other.width, height + other.height, depth + other.depth);
     }
 
+    public static Measure3 cube(final float side) {
+        return new Measure3(side, side, side);
+    }
+
 }

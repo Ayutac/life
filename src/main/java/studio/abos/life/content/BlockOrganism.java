@@ -25,25 +25,70 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
     @Getter
     @Setter
     protected Nutrients optimalNutrients;
-    protected @NonNull Function<Long, AgeCategory> ageCategory;
     @Getter
-    protected @NonNull final Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield;
+    protected long ripeAge;
+    protected @NonNull Function<Long, RipeCategory> ripeCategory;
+    @Getter
+    protected @NonNull final Map<RipeCategory, Measure3> ripeMeasure;
+    @Getter
+    protected @NonNull final Map<RipeCategory, Float> ripeMass;
+    @Getter
+    protected @NonNull final Map<RipeCategory, Nutrients> ripeNutrients;
+    @Getter
+    protected @NonNull final Map<RipeCategory, Function<Shape, Collection<MassShape>>> ripeYield;
 
-    public enum AgeCategory {
+    public enum RipeCategory {
         BABY, // seed in case of plants
         YOUNG,
         MATURE,
         ROTTEN
     }
 
-    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final Nutrients nutrients, final @NonNull Function<Long, AgeCategory> ageCategory, final @NonNull Map<AgeCategory, Function<Shape, Collection<MassShape>>> ageYield) {
-        super(universe, minimalPosition, measure, mass, health, nutrients);
-        this.ageCategory = ageCategory;
-        this.ageYield = Map.copyOf(ageYield);
+    public BlockOrganism(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<MassShape>>> ripeYield) {
+        super(universe, minimalPosition, ripeMeasure.get(RipeCategory.BABY), ripeMass.get(RipeCategory.BABY), health, ripeNutrients.get(RipeCategory.BABY));
+        this.ripeCategory = ripeCategory;
+        this.ripeMeasure = Map.copyOf(ripeMeasure);
+        this.ripeMass = Map.copyOf(ripeMass);
+        this.ripeNutrients = Map.copyOf(ripeNutrients);
+        this.ripeYield = Map.copyOf(ripeYield);
     }
 
-    public AgeCategory getAgeCategory() {
-        return ageCategory.apply(age);
+    public RipeCategory getRipeCategory() {
+        return ripeCategory.apply(age);
+    }
+
+    @Override
+    public void ageOneTick() {
+        super.ageOneTick();
+        if (canRipe()) {
+            ripeOneTick();
+        }
+    }
+
+    @Override
+    public void setAge(final long age) {
+        super.setAge(age);
+    }
+
+    public boolean canRipe() {
+        return false;
+    }
+
+    public void ripeOneTick() {
+        ripeAge++;
+        // TODO cache better
+        final RipeCategory category = getRipeCategory();
+        setMeasure(ripeMeasure.get(category));
+        setMass(ripeMass.get(category));
+        setNutrientValues(ripeNutrients.get(category));
+    }
+
+    public void setRipeAge(long ripeAge) {
+        this.ripeAge = ripeAge;
+        final RipeCategory category = getRipeCategory();
+        setMeasure(ripeMeasure.get(category));
+        setMass(ripeMass.get(category));
+        setNutrientValues(ripeNutrients.get(category));
     }
 
     @Override
@@ -53,6 +98,13 @@ public class BlockOrganism extends BlockItem implements Eater, Harvestable {
 
     @Override
     public Collection<MassShape> getYield(final @NonNull Shape tool) {
-        return ageYield.get(getAgeCategory()).apply(tool);
+        return ripeYield.get(getRipeCategory()).apply(tool);
+    }
+
+    @FunctionalInterface
+    public interface Type {
+
+        BlockOrganism create(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition);
+
     }
 }
