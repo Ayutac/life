@@ -38,7 +38,7 @@ public class Maps {
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.BABY, Functions.NO_YIELD);
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.YOUNG, Functions.NO_YIELD);
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.MATURE, Functions.WHEAT_YIELD);
-        WHEAT_YIELD.put(BlockOrganism.RipeCategory.ROTTEN, Functions.NO_YIELD);
+        WHEAT_YIELD.put(BlockOrganism.RipeCategory.ROTTEN, Functions.ROTTEN_CROP_YIELD);
     }
 
 }

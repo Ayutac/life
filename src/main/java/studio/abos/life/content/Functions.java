@@ -31,4 +31,6 @@ public interface Functions {
 
     Function<Shape, Collection<Function<Harvestable, MassShape>>> WHEAT_YIELD = tool -> Collections.nCopies(15, WHEAT_YIELD_SINGLE);
 
+    Function<Shape, Collection<Function<Harvestable, MassShape>>> ROTTEN_CROP_YIELD = tool -> List.of(crop -> Types.MUSH.create(crop.getUniverse(), crop.getMinimalPosition()));
+
 }
