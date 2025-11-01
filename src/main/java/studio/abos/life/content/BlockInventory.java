@@ -29,4 +29,5 @@ public class BlockInventory extends BlockItem implements Inventory {
         super(owner, relativeMinimalPosition, measure, mass, health, nutrients);
         owner.addInventory(this);
     }
+
 }

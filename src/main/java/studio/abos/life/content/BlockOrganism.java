@@ -17,6 +17,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Like plants or animals.
+ */
 public class BlockOrganism extends BlockItem implements Eater, Harvestable {
 
     @Getter

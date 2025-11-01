@@ -16,7 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.SequencedSet;
 
 /**
- * Like a limb.
+ * Like a limb, torso.
  */
 public class BlockInventoryForwarder extends BlockItem implements InventoryHolder {
 
