@@ -35,7 +35,6 @@ public class Maps {
         WHEAT_NUTRIENTS.put(BlockOrganism.RipeCategory.YOUNG, Nutrients.NONE);
         WHEAT_NUTRIENTS.put(BlockOrganism.RipeCategory.MATURE, Nutrients.NONE);
         WHEAT_NUTRIENTS.put(BlockOrganism.RipeCategory.ROTTEN, Nutrients.NONE);
-        // TODO think about yield implementation again
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.BABY, Functions.NO_YIELD);
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.YOUNG, Functions.NO_YIELD);
         WHEAT_YIELD.put(BlockOrganism.RipeCategory.MATURE, Functions.WHEAT_YIELD);
