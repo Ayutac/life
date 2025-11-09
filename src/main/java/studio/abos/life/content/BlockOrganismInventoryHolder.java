@@ -23,18 +23,18 @@ import java.util.function.Function;
 /**
  * Like a limb, torso.
  */
-public class BlockOrganismInventoryForwarder extends BlockOrganism implements InventoryHolder {
+public class BlockOrganismInventoryHolder extends BlockOrganism implements InventoryHolder {
 
     @Getter
     protected final Collection<Shape> ownedShapes = new HashSet<>();
     @Getter
     protected final SequencedSet<Inventory> inventories = new LinkedHashSet<>();
 
-    public BlockOrganismInventoryForwarder(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
+    public BlockOrganismInventoryHolder(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
         super(universe, minimalPosition, health, ripeCategory, ripeMeasure, ripeMass, ripeNutrients, ripeYield);
     }
 
-    public BlockOrganismInventoryForwarder(final @NonNull Owner owner, final Vec3 relativeMinimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
+    public BlockOrganismInventoryHolder(final @NonNull Owner owner, final Vec3 relativeMinimalPosition, final float health, final @NonNull Function<Long, RipeCategory> ripeCategory, final @NonNull Map<RipeCategory, Measure3> ripeMeasure, final @NonNull Map<RipeCategory, Float> ripeMass, final @NonNull Map<RipeCategory, Nutrients> ripeNutrients, final @NonNull Map<RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> ripeYield) {
         super(owner, relativeMinimalPosition, health, ripeCategory, ripeMeasure, ripeMass, ripeNutrients, ripeYield);
     }
 

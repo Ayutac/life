@@ -25,6 +25,11 @@ public class Maps {
     public final Map<BlockOrganism.RipeCategory, Float> HUMAN_HEAD_MASS = new EnumMap<>(BlockOrganism.RipeCategory.class);
     public final Map<BlockOrganism.RipeCategory, Nutrients> HUMAN_HEAD_NUTRIENTS = new EnumMap<>(BlockOrganism.RipeCategory.class);
     public final Map<BlockOrganism.RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> HUMAN_HEAD_YIELD = new EnumMap<>(BlockOrganism.RipeCategory.class);
+    // Human Torso
+    public final Map<BlockOrganism.RipeCategory, Measure3> HUMAN_TORSO_MEASURE = new EnumMap<>(BlockOrganism.RipeCategory.class);
+    public final Map<BlockOrganism.RipeCategory, Float> HUMAN_TORSO_MASS = new EnumMap<>(BlockOrganism.RipeCategory.class);
+    public final Map<BlockOrganism.RipeCategory, Nutrients> HUMAN_TORSO_NUTRIENTS = new EnumMap<>(BlockOrganism.RipeCategory.class);
+    public final Map<BlockOrganism.RipeCategory, Function<Shape, Collection<Function<Harvestable, MassShape>>>> HUMAN_TORSO_YIELD = new EnumMap<>(BlockOrganism.RipeCategory.class);
     
     static {
         // Wheat
@@ -64,6 +69,27 @@ public class Maps {
         HUMAN_HEAD_YIELD.put(BlockOrganism.RipeCategory.YOUNG, Functions.NO_YIELD);
         HUMAN_HEAD_YIELD.put(BlockOrganism.RipeCategory.MATURE, Functions.NO_YIELD);
         HUMAN_HEAD_YIELD.put(BlockOrganism.RipeCategory.EXPIRED, Functions.NO_YIELD);
+        // Human torso
+        HUMAN_TORSO_MEASURE.put(BlockOrganism.RipeCategory.BABY, new Measure3(0.1f, 0.2f, 0.08f));
+        HUMAN_TORSO_MEASURE.put(BlockOrganism.RipeCategory.YOUNG, new Measure3(0.3f, 0.8f, 0.3f));
+        HUMAN_TORSO_MEASURE.put(BlockOrganism.RipeCategory.MATURE, new Measure3(0.4f, 1.5f, 0.4f));
+        HUMAN_TORSO_MEASURE.put(BlockOrganism.RipeCategory.EXPIRED, new Measure3(0.35f, 1.2f, 0.35f));
+        // TODO correct measurements
+        HUMAN_TORSO_MASS.put(BlockOrganism.RipeCategory.BABY, 1.5f);
+        HUMAN_TORSO_MASS.put(BlockOrganism.RipeCategory.YOUNG, 3f);
+        HUMAN_TORSO_MASS.put(BlockOrganism.RipeCategory.MATURE, 5f);
+        HUMAN_TORSO_MASS.put(BlockOrganism.RipeCategory.EXPIRED, 4.5f);
+        // TODO add real nutrients
+        HUMAN_TORSO_NUTRIENTS.put(BlockOrganism.RipeCategory.BABY, Nutrients.NONE);
+        HUMAN_TORSO_NUTRIENTS.put(BlockOrganism.RipeCategory.YOUNG, Nutrients.NONE);
+        HUMAN_TORSO_NUTRIENTS.put(BlockOrganism.RipeCategory.MATURE, Nutrients.NONE);
+        HUMAN_TORSO_NUTRIENTS.put(BlockOrganism.RipeCategory.EXPIRED, Nutrients.NONE);
+        // TODO add yield
+        HUMAN_TORSO_YIELD.put(BlockOrganism.RipeCategory.BABY, Functions.NO_YIELD);
+        HUMAN_TORSO_YIELD.put(BlockOrganism.RipeCategory.YOUNG, Functions.NO_YIELD);
+        HUMAN_TORSO_YIELD.put(BlockOrganism.RipeCategory.MATURE, Functions.NO_YIELD);
+        HUMAN_TORSO_YIELD.put(BlockOrganism.RipeCategory.EXPIRED, Functions.NO_YIELD);
+
     }
 
 }

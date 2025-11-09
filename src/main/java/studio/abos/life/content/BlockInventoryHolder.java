@@ -15,18 +15,18 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.SequencedSet;
 
-public class BlockInventoryForwarder extends BlockItem implements InventoryHolder {
+public class BlockInventoryHolder extends BlockItem implements InventoryHolder {
 
     @Getter
     protected final Collection<Shape> ownedShapes = new HashSet<>();
     @Getter
     protected final SequencedSet<Inventory> inventories = new LinkedHashSet<>();
 
-    public BlockInventoryForwarder(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
+    public BlockInventoryHolder(final @NonNull Universe universe, final @NonNull Vec3 minimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
         super(universe, minimalPosition, measure, mass, health, nutrients);
     }
 
-    public BlockInventoryForwarder(final @NonNull InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
+    public BlockInventoryHolder(final @NonNull InventoryHolder owner, final @NonNull Vec3 relativeMinimalPosition, final @NonNull Measure3 measure, final float mass, final float health, final @NonNull Nutrients nutrients) {
         super(owner, relativeMinimalPosition, measure, mass, health, nutrients);
     }
 
